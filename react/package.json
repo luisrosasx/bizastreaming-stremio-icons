@@ -1,5 +1,6 @@
 {
     "name": "@stremio/stremio-icons-react",
+    "version": "5.15.0",
     "type": "module",
     "main": "./dist/index.cjs",
     "module": "./dist/index.js",
