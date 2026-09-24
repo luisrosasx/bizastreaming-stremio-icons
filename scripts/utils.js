@@ -1,7 +1,6 @@
 const fs = require('fs');
 const path = require('path');
 const { paramCase, camelCase, snakeCase } = require('change-case');
-const sharp = require('sharp');
 const glob = require('glob');
 
 const toSVGFile = (viewBox, paths) => {
@@ -28,6 +27,8 @@ const toSVGFiles = (icons) => {
 };
 
 const toPngFiles = (icons, size) => {
+    // Lazy require: only android builds need sharp's native binary.
+    const sharp = require('sharp');
     return Promise.all(icons.map(async ({ name, viewBox, paths }) => {
         const svgBuffer = Buffer.from(toSVGFile(viewBox, paths));
         const pngBuffer = await sharp(svgBuffer).png().resize(size, size).toBuffer();

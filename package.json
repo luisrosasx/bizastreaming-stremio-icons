@@ -19,7 +19,7 @@
     ],
     "scripts": {
         "build": "node scripts/build.js",
-        "prepare": "run-s \"build -- all\" build:react",
+        "prepare": "run-s \"build -- react\" build:react",
         "build:android": "npm run build -- android",
         "build:react": "npm run build -w react",
         "build:solid": "npm run build -w solid",
