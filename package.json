@@ -9,13 +9,21 @@
     },
     "license": "MIT",
     "private": true,
+    "exports": {
+        "./react": {
+            "types": "./react/dist/index.d.ts",
+            "import": "./react/dist/index.js",
+            "require": "./react/dist/index.cjs"
+        }
+    },
     "repository": {
         "type": "git",
         "url": "git+https://github.com/Stremio/stremio-icons.git"
     },
     "scripts": {
         "build": "node scripts/build.js",
-        "prepare": "run-s \"build -- react\" build:react",
+        "prepare": "run-s \"build -- react\" build:react clean:react-manifest",
+        "clean:react-manifest": "node -e \"require('fs').rmSync('react/package.json', { force: true })\"",
         "build:android": "npm run build -- android",
         "build:react": "npm install --prefix react && npm run build --prefix react",
         "build:solid": "npm install --prefix solid && npm run build --prefix solid",
