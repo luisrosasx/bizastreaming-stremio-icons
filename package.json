@@ -11,9 +11,9 @@
     "private": true,
     "exports": {
         "./react": {
-            "types": "./react/dist/index.d.ts",
-            "import": "./react/dist/index.mjs",
-            "require": "./react/dist/index.cjs"
+            "types": "./react-dist/index.d.ts",
+            "import": "./react-dist/index.mjs",
+            "require": "./react-dist/index.cjs"
         }
     },
     "repository": {
@@ -24,7 +24,7 @@
         "build": "node scripts/build.js",
         "prepare": "run-s \"build -- react\" build:react",
         "build:android": "npm run build -- android",
-        "build:react": "cd react && tsup",
+        "build:react": "tsup --config tsup.react.config.ts",
         "build:solid": "npm install --prefix solid && npm run build --prefix solid",
         "build:jade": "npm run build -- jade",
         "build:all": "run-s \"build -- all\" build:react build:solid"

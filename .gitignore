@@ -5,3 +5,4 @@ package-lock.json
 .idea/
 icons.jade
 icons.styl
+/react-dist
